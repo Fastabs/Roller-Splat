@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3692389972138368626}
   - component: {fileID: 3692389972138368627}
   - component: {fileID: 3692389972138368628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999999, y: 3.092913, z: 0.9999999}
+  m_Center: {x: 0, y: 0.67298377, z: 0}

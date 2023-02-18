@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8440141677903506259}
   - component: {fileID: 8385199059433281263}
   - component: {fileID: 5939055155088394463}
-  m_Layer: 0
+  - component: {fileID: 7335276612271009773}
+  m_Layer: 7
   m_Name: Road Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,5 +96,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8817717, y: 5.7244835, z: 0.8817717}
-  m_Center: {x: 0.00000076108074, y: 3.5583413, z: 0}
+  m_Size: {x: 0.8817717, y: 11.661049, z: 0.8817717}
+  m_Center: {x: 0.00000076108074, y: 4.0865035, z: 0}
+--- !u!114 &7335276612271009773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055779418958812288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615c46a556b56ac46878b3d757d474e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 8385199059433281263}
+  position: {x: 0, y: 0, z: 0}
+  isPainted: 0

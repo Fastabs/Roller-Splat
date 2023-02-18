@@ -1,8 +1,5 @@
-using System;
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,14 +10,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject prefabWallTile;
     [SerializeField] private GameObject prefabRoadTile;
 
-    private Color colorWall = Color.white;
-    private Color colorRoad = Color.black;
+    [HideInInspector] public List<RoadTile> roadTilesList = new List<RoadTile>();
+    [HideInInspector] public RoadTile defaultBallRoadPosition;
+
+    private readonly Color colorWall = Color.white;
+    private readonly Color colorRoad = Color.black;
 
     private float unitPerPixel;
 
     private void Awake()
     {
         Generate();
+        defaultBallRoadPosition = roadTilesList[0];
     }
 
     private void Generate()
@@ -57,5 +58,8 @@ public class LevelManager : MonoBehaviour
         position.y = prefabTile.transform.position.y;
 
         var obj = Instantiate(prefabTile, position, Quaternion.identity, transform);
+
+        if (prefabTile == prefabRoadTile)
+            roadTilesList.Add(obj.GetComponent<RoadTile>());
     }
 }
