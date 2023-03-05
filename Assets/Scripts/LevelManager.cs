@@ -10,7 +10,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject prefabWallTile;
     [SerializeField] private GameObject prefabRoadTile;
 
-    [HideInInspector] public List<RoadTile> roadTilesList = new List<RoadTile>();
+    [Header("Ball and Road paint color")] 
+    public Color paintColor;
+
+    [HideInInspector] public List<RoadTile> roadTilesList;
     [HideInInspector] public RoadTile defaultBallRoadPosition;
 
     private readonly Color colorWall = Color.white;
@@ -35,9 +38,9 @@ public class LevelManager : MonoBehaviour
         var offset = new Vector3(width / 2f, 0f, height / 2f) * unitPerPixel
                      - new Vector3(halfUnitPerPixel, 0f, halfUnitPerPixel);
 
-        for (int x = 0; x < width; x++)
+        for (var x = 0; x < width; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (var y = 0; y < height; y++)
             {
                 //Get pixel color
                 var pixelColor = levelTexture.GetPixel(x, y);

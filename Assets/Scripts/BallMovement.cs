@@ -2,6 +2,8 @@ using UnityEngine;
 using GG.Infrastructure.Utils.Swipe;
 using DG.Tweening;
 using System.Collections.Generic;
+using UnityEngine.Events;
+using UnityEngine.PlayerLoop;
 
 public class BallMovement : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private float stepDuration = 0.1f;
     [SerializeField] private LayerMask wallsAndRoadsLayer;
     private const float MAX_RAY_DISTANCE = 10f;
+
+    public UnityAction<List<RoadTile>, float> onMoveStart;
 
     private Vector3 moveDirection;
     private bool canMove = true;
@@ -36,37 +40,42 @@ public class BallMovement : MonoBehaviour
 
     private void MoveBall()
     {
-        if (canMove)
+        if (!canMove) return;
+        canMove = false;
+        //add raycast in the swipe direction
+        var hits = Physics.RaycastAll(transform.position, moveDirection, MAX_RAY_DISTANCE,
+            wallsAndRoadsLayer.value);
+        System.Array.Sort(hits, (x,y) => x.distance.CompareTo(y.distance));
+        var targetPosition = transform.position;
+        var steps = 0;
+
+        var pathRoadTiles = new List<RoadTile>();
+
+        for (var i = 0; i < hits.Length; i++)
         {
-            //add raycast in the swipe direction
-            var hits = Physics.RaycastAll(transform.position, moveDirection, MAX_RAY_DISTANCE,
-                wallsAndRoadsLayer.value);
-            var targetPosition = transform.position;
-            var steps = 0;
-
-            for (var i = 0; i < hits.Length; i++)
+            if (hits[i].collider.isTrigger)
             {
-                if (hits[i].collider.isTrigger)
-                {
-                    //Road tile
-                }
-                else
-                {
-                    //Wall tile
-                    if (i == 0)
-                    {
-                        canMove = true;
-                        return;
-                    }
-
-                    steps = i;
-                    targetPosition = hits[i - 1].transform.position;
-                    break;
-                }
+                //Road tile
+                //add road tiles to the list to be painted
+                pathRoadTiles.Add(hits[i].transform.GetComponent<RoadTile>());
             }
-            //move the ball to targetPosition
-            var moveDuration = stepDuration * steps;
-            transform.DOMove(targetPosition, moveDuration).SetEase(Ease.OutExpo).OnComplete(() => canMove = true);
+            else
+            {
+                //Wall tile
+                if (i == 0)
+                {
+                    canMove = true;
+                    return;
+                }
+                steps = i;
+                targetPosition = hits[i - 1].transform.position;
+                break;
+            }
         }
+        //move the ball to targetPosition
+        var moveDuration = stepDuration * steps;
+        transform.DOMove(targetPosition, moveDuration).SetEase(Ease.OutExpo).OnComplete(() => canMove = true);
+
+        onMoveStart?.Invoke(pathRoadTiles, moveDuration);
     }
 }
