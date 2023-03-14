@@ -1,13 +1,19 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
+
 public class BallRoadPainter : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private BallMovement ballMovement;
     [SerializeField] private MeshRenderer ballMeshRenderer;
 
-    public int paintedRoadTiles = 0;
+    [SerializeField] private TextMeshProUGUI winText;
+    [SerializeField] private Button nextLevelButton;
+
+    public int paintedRoadTiles;
 
     private void Start()
     {
@@ -35,11 +41,9 @@ public class BallRoadPainter : MonoBehaviour
             }
             
             //Check if level completed
-            if (paintedRoadTiles == levelManager.roadTilesList.Count)
-            {
-                Debug.Log("Level Completed!");
-                //Load new level
-            }
+            if (paintedRoadTiles != levelManager.roadTilesList.Count) continue;
+            winText.gameObject.SetActive(true);
+            nextLevelButton.gameObject.SetActive(true);
         }
     }
     private void Paint(RoadTile roadTile, float duration, float delay)
