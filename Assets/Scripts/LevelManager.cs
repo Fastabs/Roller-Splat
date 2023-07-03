@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,9 +22,11 @@ public class LevelManager : MonoBehaviour
     private readonly Color colorRoad = Color.black;
 
     private float unitPerPixel;
+    public static int currentLevel;
 
     private void Awake()
     {
+        levelTexture = Resources.Load<Texture2D>($"Levels Textures/level{currentLevel}");
         Generate();
         defaultBallRoadPosition = roadTilesList[0];
     }
@@ -64,5 +68,11 @@ public class LevelManager : MonoBehaviour
 
         if (prefabTile == prefabRoadTile)
             roadTilesList.Add(obj.GetComponent<RoadTile>());
+    }
+
+    public void NextLevel()
+    {
+        currentLevel++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

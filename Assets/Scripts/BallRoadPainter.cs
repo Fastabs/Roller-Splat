@@ -10,13 +10,15 @@ public class BallRoadPainter : MonoBehaviour
     [SerializeField] private BallMovement ballMovement;
     [SerializeField] private MeshRenderer ballMeshRenderer;
 
-    [SerializeField] private TextMeshProUGUI winText;
+    [SerializeField] private TextMeshProUGUI levelStatus;
     [SerializeField] private Button nextLevelButton;
 
     public int paintedRoadTiles;
 
     private void Start()
     {
+        levelStatus.SetText($"LEVEL {LevelManager.currentLevel}");
+        
         //paint ball
         ballMeshRenderer.material.color = levelManager.paintColor;
         
@@ -42,7 +44,7 @@ public class BallRoadPainter : MonoBehaviour
             
             //Check if level completed
             if (paintedRoadTiles != levelManager.roadTilesList.Count) continue;
-            winText.gameObject.SetActive(true);
+            levelStatus.SetText("LEVEL COMPLETE");
             nextLevelButton.gameObject.SetActive(true);
         }
     }

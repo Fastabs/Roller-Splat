@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 127048991}
   - component: {fileID: 127048990}
   m_Layer: 0
-  m_Name: Win Text
+  m_Name: LevelStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &127048989
 RectTransform:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL COMPLETE
+  m_text: LEVEL 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286380543
-  m_fontColor: {r: 1, g: 0.9764054, b: 0.48490566, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -502,8 +502,8 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+    m_ColorMultiplier: 1.46
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -520,7 +520,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 909294714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1684712667}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &909294714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.04101102, g: 0.06001227, b: 0.3018868, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -542,7 +554,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -710,7 +722,7 @@ MonoBehaviour:
   levelManager: {fileID: 1684712667}
   ballMovement: {fileID: 981906362}
   ballMeshRenderer: {fileID: 1349504879}
-  winText: {fileID: 127048990}
+  levelStatus: {fileID: 127048990}
   nextLevelButton: {fileID: 909294713}
   paintedRoadTiles: 0
 --- !u!1 &987852315
@@ -921,7 +933,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7d847f0b9c8ac7499010f7f52d99d21, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5136447412ce98d4a8f74e4fc0e3680a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.54901963}
   m_FlipX: 0
   m_FlipY: 0
@@ -939,14 +951,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415368001}
-  m_LocalRotation: {x: 0.36946222, y: 0.36946222, z: -0.60290766, w: 0.60290766}
-  m_LocalPosition: {x: 0, y: -5.78, z: 1}
+  m_LocalRotation: {x: 0.5224985, y: 0, z: 0, w: 0.8526402}
+  m_LocalPosition: {x: 0, y: -4.4, z: 3.6}
   m_LocalScale: {x: 4, y: 4, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 63, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 63, y: 0, z: 0}
 --- !u!1 &1426082888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,9 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb57c8e84d21d8643b9378d8edc62190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 1684712667}
-  winText: {fileID: 127048990}
-  nextLevelButton: {fileID: 909294713}
 --- !u!1 &1684712665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,10 +1218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffb8e65258f9a441970c9b60802e891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTexture: {fileID: 2800000, guid: 30f1ca935e6bc5543b62e10c4c025708, type: 3}
+  levelTexture: {fileID: 2800000, guid: cda4a328e5b176848b1252180056d67e, type: 3}
   prefabWallTile: {fileID: 3692389972138368630, guid: 72613c7b7c530134dadf8f5aa19591ef, type: 3}
   prefabRoadTile: {fileID: 3055779418958812288, guid: 082b8528313495a47ab9cf833cb350d2, type: 3}
-  paintColor: {r: 0.9811321, g: 0.3646849, b: 0.9524895, a: 1}
+  paintColor: {r: 0.15331075, g: 0.9339623, b: 0.44830343, a: 1}
   roadTilesList: []
   defaultBallRoadPosition: {fileID: 0}
 --- !u!1 &1796201081
@@ -1282,8 +1291,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1306,7 +1315,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
