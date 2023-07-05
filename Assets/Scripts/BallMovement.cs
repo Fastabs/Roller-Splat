@@ -3,7 +3,6 @@ using GG.Infrastructure.Utils.Swipe;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityEngine.PlayerLoop;
 
 public class BallMovement : MonoBehaviour
 {
