@@ -70,6 +70,16 @@ public class LevelManager : MonoBehaviour
             roadTilesList.Add(obj.GetComponent<RoadTile>());
     }
 
+    public void RefreshLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+    
     public void NextLevel()
     {
         currentLevel++;

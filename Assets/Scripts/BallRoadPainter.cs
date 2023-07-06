@@ -12,6 +12,8 @@ public class BallRoadPainter : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI levelStatus;
     [SerializeField] private Button nextLevelButton;
+    [SerializeField] private Button refreshLevel;
+    [SerializeField] private Button menu;
 
     public int paintedRoadTiles;
 
@@ -45,6 +47,8 @@ public class BallRoadPainter : MonoBehaviour
             //Check if level completed
             if (paintedRoadTiles != levelManager.roadTilesList.Count) continue;
             levelStatus.SetText("LEVEL COMPLETE");
+            refreshLevel.gameObject.SetActive(false);
+            menu.gameObject.SetActive(false);
             nextLevelButton.gameObject.SetActive(true);
         }
     }
